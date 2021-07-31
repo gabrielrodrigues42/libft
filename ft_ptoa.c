@@ -1,58 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_ptoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/02 22:25:16 by gandrade          #+#    #+#             */
-/*   Updated: 2021/07/26 22:58:07 by gandrade         ###   ########.fr       */
+/*   Created: 2021/07/28 11:35:37 by gandrade          #+#    #+#             */
+/*   Updated: 2021/07/31 13:12:25 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	void	ft_nbrstr(char *str, int n, int size)
+static	void	ft_ptrstr(char *str, size_t pointer, size_t size)
 {
 	str[size] = '\0';
-	if (n >= 0)
+	while (size--)
 	{
-		while (size--)
+		if (pointer % 16 < 10)
 		{
-			str[size] = (n % 10) + '0';
-			n /= 10;
+			str[size] = (pointer % 16) + '0';
+			pointer /= 16;
 		}
-	}
-	else
-	{
-		str[0] = '-';
-		while (size-- && size > 0)
+		else
 		{
-			str[size] = (n % 10) * -1 + '0';
-			n /= 10;
+			str[size] = (pointer % 16) + 87;
+			pointer /= 16;
 		}
 	}
 }
 
-char	*ft_itoa(int n)
+char	*ft_ptoa(size_t pointer)
 {
 	char	*res;
-	int		size;
-	int		aux;
+	size_t	size;
+	size_t	aux;
 
-	if (n >= 0)
-		size = 1;
-	else
-		size = 2;
-	aux = n / 10;
+	size = 1;
+	aux = pointer / 16;
 	while (aux)
 	{
 		size++;
-		aux /= 10;
+		aux /= 16;
 	}
 	res = malloc(size + 1);
 	if (!res)
 		return (NULL);
-	ft_nbrstr(res, n, size);
+	ft_ptrstr(res, pointer, size);
 	return (res);
 }

@@ -1,58 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_htoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/02 22:25:16 by gandrade          #+#    #+#             */
-/*   Updated: 2021/07/26 22:58:07 by gandrade         ###   ########.fr       */
+/*   Created: 2021/07/26 21:34:12 by gandrade          #+#    #+#             */
+/*   Updated: 2021/07/28 17:18:25 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	void	ft_nbrstr(char *str, int n, int size)
+static	void	ft_hexstr(char *str, unsigned int n, int size, int converter)
 {
 	str[size] = '\0';
-	if (n >= 0)
+	while (size--)
 	{
-		while (size--)
+		if (n % 16 < 10)
 		{
-			str[size] = (n % 10) + '0';
-			n /= 10;
+			str[size] = (n % 16) + '0';
+			n /= 16;
 		}
-	}
-	else
-	{
-		str[0] = '-';
-		while (size-- && size > 0)
+		else
 		{
-			str[size] = (n % 10) * -1 + '0';
-			n /= 10;
+			str[size] = (n % 16) + converter;
+			n /= 16;
 		}
 	}
 }
 
-char	*ft_itoa(int n)
+char	*ft_htoa(unsigned int n, int converter)
 {
-	char	*res;
-	int		size;
-	int		aux;
+	char			*res;
+	int				size;
+	unsigned int	aux;
 
-	if (n >= 0)
-		size = 1;
-	else
-		size = 2;
-	aux = n / 10;
+	size = 1;
+	aux = n / 16;
 	while (aux)
 	{
 		size++;
-		aux /= 10;
+		aux /= 16;
 	}
 	res = malloc(size + 1);
 	if (!res)
 		return (NULL);
-	ft_nbrstr(res, n, size);
+	if (converter == 'x')
+		converter = 87;
+	else
+		converter = 55;
+	ft_hexstr(res, n, size, converter);
 	return (res);
 }
