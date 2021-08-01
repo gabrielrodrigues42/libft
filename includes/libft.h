@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 01:33:39 by gandrade          #+#    #+#             */
-/*   Updated: 2021/07/31 14:59:08 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/08/01 13:39:52 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,14 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+int		ft_islower(int c);
+int		ft_isupper(int c);
+int		ft_isspace(int c);
+int		ft_str_isalpha(char *str);
+int		ft_str_isdigit(char *str);
+int		ft_str_isprint(char *str);
+int		ft_str_islower(char *str);
+int		ft_str_isupper(char *str);
 
 /*
 ** To Functions
@@ -72,6 +80,8 @@ int		ft_isprint(int c);
 
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+char	*ft_str_tolower(char *str);
+char	*ft_str_toupper(char *str);
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
 char	*ft_uitoa(unsigned int n);
@@ -82,6 +92,8 @@ char	*ft_ptoa(size_t pointer);
 ** Put Functions
 */
 
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
@@ -105,12 +117,18 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 */
 
 size_t	ft_strlen(const char *s);
+char	*ft_strcpy(char *dest, char *src);
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+char	*ft_strcat(char *dest, char *src);
+char	*ft_strncat(char *dest, char *src, unsigned int nb);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+int		ft_strcmp(char *s1, char *s2);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+char	*ft_strstr(char *str, char *to_find);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
