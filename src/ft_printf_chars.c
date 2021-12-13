@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chars.c                                         :+:      :+:    :+:   */
+/*   ft_printf_chars.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:19:32 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/12 22:00:07 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/12 23:23:26 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_string(va_list args)
 	type.string = va_arg(args, char *);
 	i = 0;
 	if (!type.string)
-		return (write(1, NULL_STR, ft_strlen(NULL_STR)));
+		return (write(1, "(null)", 6));
 	while (type.string[i] != '\0')
 		write(1, &type.string[i++], 1);
 	return (i);

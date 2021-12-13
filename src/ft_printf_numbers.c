@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_numbers.c                                       :+:      :+:    :+:   */
+/*   ft_printf_numbers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 14:42:52 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/12 21:50:36 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/12 23:23:04 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_pointer(va_list args)
 
 	type.pointer = va_arg(args, size_t);
 	if (!type.pointer)
-		return (write(1, "0x0", 3));
+		return (write(1, NULL_STR, ft_strlen(NULL_STR)));
 	aux = ft_ptoa(type.pointer);
 	res = ft_strjoin("0x", aux);
 	i = 0;
