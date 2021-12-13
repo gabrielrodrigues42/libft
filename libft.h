@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 01:33:39 by gandrade          #+#    #+#             */
-/*   Updated: 2021/11/11 13:18:43 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/12 21:13:33 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_strclear(char **str);
+void	ft_strclear2(char **str);
 
 /*
 ** Linked List
