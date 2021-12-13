@@ -6,14 +6,13 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 01:41:40 by gandrade          #+#    #+#             */
-/*   Updated: 2021/08/04 16:22:04 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/12 21:37:00 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int	return_line(int rd, char **storage, char **line);
-static int	check_error(int rd, int fd, char *buffer);
 
 int	get_next_line(int fd, char **line)
 {
@@ -24,7 +23,6 @@ int	get_next_line(int fd, char **line)
 
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	rd = read(fd, buffer, BUFFER_SIZE);
-	check_error(rd, fd, buffer);
 	while (rd > 0)
 	{
 		buffer[rd] = '\0';
@@ -70,11 +68,4 @@ static int	return_line(int rd, char **storage, char **line)
 	}
 	ft_strclear(storage);
 	return (END_OF_FILE);
-}
-
-static int	check_error( int rd, int fd, char *buffer)
-{
-	if (rd < 0 || fd < 0 || !buffer || BUFFER_SIZE < 1)
-		return (ERROR);
-	return (0);
 }

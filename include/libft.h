@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 01:33:39 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/12 21:13:33 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:07:20 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,46 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 /*
 ** GNL Defines
 */
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 128
+# endif
+
 # define OPEN_MAX 1024
-# define BUFFER_SIZE 128
 # define LINE_READ 1
 # define END_OF_FILE 0
 # define ERROR -1
+
+/*
+** ft-printf Defines
+*/
+
+# ifdef __linux__
+#  define NULL_STR "(nil)"
+# elif defined (__APPLE__)
+#  define NULL_STR "0x0"
+# else
+#  define NULL_STR "(null)"
+# endif
+
+/*
+** ft-printf Union
+*/
+
+typedef union s_types
+{
+	size_t	pointer;
+	char	*string;
+	int		character;
+	int		number;
+	int		unumber;
+	int		hexadecimal;
+}	t_types;
 
 /*
 ** Linked List Struct
@@ -129,5 +159,17 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 */
 
 int		get_next_line(int fd, char **line);
+
+/*
+** ft-printf
+*/
+
+int		ft_printf(const char *format, ...);
+int		ft_pointer(va_list args);
+int		ft_string(va_list args);
+int		ft_char(va_list args);
+int		ft_number(va_list args);
+int		ft_unumber(va_list args);
+int		ft_hex(va_list args, int converter);
 
 #endif
