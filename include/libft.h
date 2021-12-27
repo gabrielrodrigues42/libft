@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 01:33:39 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/12 22:07:20 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/27 12:55:34 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef union s_types
 }	t_types;
 
 /*
-** Linked List Struct
+** Singly Linked List Struct
 */
 
 typedef struct s_list
@@ -69,6 +69,17 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+/*
+** Doubly Circular Linked List Struct
+*/
+
+typedef struct s_lst2c
+{
+	void			*data;
+	struct s_lst2c	*next;
+	struct s_lst2c	*prev;
+}	t_lst2c;
 
 /*
 ** Is Functions
@@ -141,7 +152,7 @@ void	ft_strclear(char **str);
 void	ft_strclear2(char **str);
 
 /*
-** Linked List
+** Singly Linked List
 */
 
 t_list	*ft_lstnew(void *content);
@@ -153,6 +164,19 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/*
+** Doubly Circular Linked List
+*/
+
+t_lst2c	*ft_lst2c_new(void *data);
+t_lst2c	*ft_lst2c_last(t_lst2c *lst);
+int		ft_lst2c_size(t_lst2c *lst);
+void	ft_lst2c_add_front(t_lst2c **lst, t_lst2c *new);
+void	ft_lst2c_add_back(t_lst2c **lst, t_lst2c *new);
+t_lst2c	*ft_lst2c_pop_node(t_lst2c **lst, t_lst2c *node);
+void	ft_lst2c_del_node(t_lst2c *node, void (*del)(void *));
+void	ft_lst2c_clear(t_lst2c **lst, void (*del)(void *));
 
 /*
 ** GNL
