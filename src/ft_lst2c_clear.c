@@ -6,24 +6,22 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 22:38:51 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/27 12:53:27 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/29 12:55:03 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lst2c_clear(t_lst2c **lst, void (*del)(void *))
+void	ft_lst2c_clear(t_lst2c **head)
 {
-	t_lst2c	*tmp;
+	t_lst2c	*temp;
 
-	if (!*lst)
-		return ;
-	(*lst)->prev->next = NULL;
-	while (*lst)
+	(*head)->prev->next = NULL;
+	while (*head)
 	{
-		tmp = (*lst)->next;
-		ft_lst2c_del_node(*lst, del);
-		*lst = tmp;
+		temp = (*head)->next;
+		free(*head);
+		*head = temp;
 	}
-	*lst = NULL;
+	*head = NULL;
 }

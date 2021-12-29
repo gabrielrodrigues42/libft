@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 01:33:39 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/27 12:55:34 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/29 12:55:11 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,13 +170,11 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 */
 
 t_lst2c	*ft_lst2c_new(void *data);
-t_lst2c	*ft_lst2c_last(t_lst2c *lst);
-int		ft_lst2c_size(t_lst2c *lst);
-void	ft_lst2c_add_front(t_lst2c **lst, t_lst2c *new);
-void	ft_lst2c_add_back(t_lst2c **lst, t_lst2c *new);
-t_lst2c	*ft_lst2c_pop_node(t_lst2c **lst, t_lst2c *node);
-void	ft_lst2c_del_node(t_lst2c *node, void (*del)(void *));
-void	ft_lst2c_clear(t_lst2c **lst, void (*del)(void *));
+t_lst2c	*ft_lst2c_last(t_lst2c *head);
+int		ft_lst2c_size(t_lst2c *head);
+void	ft_lst2c_add_front(t_lst2c **head, t_lst2c *new_node);
+void	ft_lst2c_add_back(t_lst2c **head, t_lst2c *new_node);
+void	ft_lst2c_clear(t_lst2c **head);
 
 /*
 ** GNL

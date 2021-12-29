@@ -6,21 +6,21 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 22:38:51 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/26 22:01:05 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/29 10:48:51 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lst2c_size(t_lst2c *lst)
+int	ft_lst2c_size(t_lst2c *head)
 {
 	int	len;
 
-	lst->prev->next = NULL;
 	len = 0;
-	while (lst)
+	head->prev->next = NULL;
+	while (head)
 	{
-		lst = lst->next;
+		head = head->next;
 		len++;
 	}
 	return (len);
